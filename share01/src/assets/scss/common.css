@@ -1,0 +1,279 @@
+.width-full {
+  width: 100%; }
+
+.float-left {
+  float: left; }
+
+.float-right {
+  float: right; }
+
+.clearfixed:after {
+  display: block;
+  clear: both;
+  visibility: hidden;
+  height: 0;
+  content: " ";
+  font-size: 0; }
+
+.fixed-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.ani.down {
+  animation: down .3s ease-out;
+  animation-fill-mode: both; }
+.ani.left2right {
+  animation: left2right .3s ease-out;
+  animation-fill-mode: both; }
+.ani.right2left {
+  animation: right2left .3s ease-out;
+  animation-fill-mode: both; }
+.ani.right2out {
+  animation: right2out .3s ease-out;
+  animation-fill-mode: both; }
+.ani.furight2left {
+  animation: furight2left .3s ease-out;
+  animation-fill-mode: both; }
+
+@keyframes down {
+  0% {
+    transform: translate3d(0, -100%, 0); }
+  100% {
+    transform: translate3d(0, 0, 0); } }
+@keyframes left2right {
+  0% {
+    transform: translate3d(100%, 0, 0); }
+  100% {
+    transform: translate3d(0, 0, 0); } }
+@keyframes right2left {
+  100% {
+    transform: translate3d(100%, 0, 0); } }
+@keyframes right2out {
+  0% {
+    transform: translate3d(0, 0, 0); }
+  100% {
+    transform: translate3d(-100%, 0, 0); } }
+@keyframes furight2left {
+  0% {
+    transform: translate3d(-100%, 0, 0); }
+  100% {
+    transform: translate3d(0, 0, 0); } }
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible; }
+  to {
+    transform: translate3d(0, 0, 0); } }
+@keyframes slideOutDown {
+  from {
+    transform: translate3d(0, 0, 0); }
+  to {
+    visibility: hidden;
+    transform: translate3d(0, 100%, 0); } }
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+@keyframes slideInDown {
+  from {
+    transform: translate3d(0, -100%, 0);
+    visibility: visible; }
+  to {
+    transform: translate3d(0, 0, 0); } }
+@keyframes slideOutUp {
+  from {
+    transform: translate3d(0, 0, 0); }
+  to {
+    visibility: hidden;
+    transform: translate3d(0, -100%, 0); } }
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3); }
+  50% {
+    opacity: 1; } }
+.animated {
+  animation-duration: 0.3s;
+  animation-fill-mode: both; }
+
+.fadeOut {
+  animation-name: fadeOut; }
+
+.fadeIn {
+  animation-name: fadeIn; }
+
+.zoomIn {
+  animation-name: zoomIn; }
+
+.chooseAni-enter-active {
+  transition: all 0.3s; }
+  .chooseAni-enter-active .slideInUp {
+    animation-name: slideInUp;
+    animation-fill-mode: both; }
+  .chooseAni-enter-active .slideInDown {
+    animation-name: slideInDown;
+    animation-fill-mode: both; }
+  .chooseAni-enter-active .choose-pop-bg {
+    animation: fadeIn 0.3s;
+    animation-fill-mode: both; }
+
+.chooseAni-leave-active {
+  transition: all 0.3s; }
+  .chooseAni-leave-active .slideInUp {
+    animation-name: slideOutDown;
+    animation-fill-mode: both; }
+  .chooseAni-leave-active .slideInDown {
+    animation-name: slideOutUp;
+    animation-fill-mode: both; }
+  .chooseAni-leave-active .choose-pop-bg {
+    animation: fadeOut 0.3s;
+    animation-fill-mode: both; }
+
+.goUpAni {
+  animation-duration: 0.3s;
+  animation-fill-mode: both; }
+  .goUpAni.slideInUp {
+    animation-name: slideInUp2;
+    animation-fill-mode: both; }
+
+.goDownAni {
+  animation-duration: 0.3s;
+  animation-fill-mode: both; }
+  .goDownAni.slideOutDown {
+    animation-name: slideOutDown2;
+    animation-fill-mode: both; }
+
+@keyframes slideInUp2 {
+  from {
+    transform: translate3d(0, 150%, 0);
+    visibility: visible;
+    opacity: 0; }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1; } }
+@keyframes slideOutDown2 {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1; }
+  to {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(0, 150%, 0); } }
+.for-ani-route {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200; }
+
+.routerContainer {
+  min-height: 100%;
+  background: #f8f8f8; }
+
+.flex {
+  display: flex; }
+  .flex.flex-h {
+    flex-direction: row; }
+  .flex.flex-h-c {
+    justify-content: center; }
+  .flex.flex-h-start {
+    justify-content: flex-start; }
+  .flex.flex-h-end {
+    justify-content: flex-end; }
+  .flex.flex-h-between {
+    justify-content: space-between; }
+  .flex.flex-h-around {
+    justify-content: space-around; }
+  .flex.flex-v {
+    flex-direction: column; }
+  .flex.flex-v-c {
+    align-items: center; }
+  .flex.flex-v-start {
+    align-items: flex-start; }
+  .flex.flex-v-end {
+    align-items: flex-end; }
+  .flex.flex-v-baseline {
+    align-items: baseline; }
+  .flex.flex-v-stretch {
+    align-items: stretch; }
+  .flex.flex-wrap {
+    flex-wrap: wrap; }
+
+.lineTwo {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; }
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); }
+
+.hideScroll {
+  height: 100%;
+  overflow: hidden; }
+
+.fade-enter {
+  opacity: 0; }
+
+.fade-enter-to {
+  opacity: 1; }
+
+.fade-leave {
+  opacity: 1; }
+
+.fade-leave-to {
+  opacity: 0; }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .3s; }
+
+@keyframes layerDownFadeIn {
+  0% {
+    transform: translateY(100%); }
+  100% {
+    transform: translateY(0); } }
+@keyframes layerDownFadeOut {
+  0% {
+    transform: translateY(0); }
+  100% {
+    transform: translateY(100%); } }
+@keyframes layerRightFadeIn {
+  0% {
+    transform: translateX(100%); }
+  100% {
+    transform: translateX(0); } }
+@keyframes layerRightFadeOut {
+  0% {
+    transform: translateX(0); }
+  100% {
+    transform: translateX(100%); } }
+@keyframes layerLeftFadeIn {
+  0% {
+    transform: translateX(-100%); }
+  100% {
+    transform: translateX(0); } }
+@keyframes layerLeftFadeOut {
+  0% {
+    transform: translateX(0); }
+  100% {
+    transform: translateX(-100%); } }
+
+/*# sourceMappingURL=common.css.map */

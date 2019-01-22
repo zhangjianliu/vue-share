@@ -1,0 +1,404 @@
+
+.width-full {
+  width: 100%;
+}
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
+.clearfixed:after{
+  display:block;
+  clear:both;
+  visibility:hidden;
+  height:0;
+  content:" ";
+  font-size:0;
+}
+.fixed-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.ani {
+  &.down {
+    animation: down .3s ease-out;
+    animation-fill-mode: both;
+  }
+  &.left2right {
+    animation: left2right .3s ease-out;
+    animation-fill-mode: both;
+  }
+  &.right2left {
+    animation: right2left .3s ease-out;
+    animation-fill-mode: both;
+  }
+  &.right2out {
+    animation: right2out .3s ease-out;
+    animation-fill-mode: both;
+  }
+  &.furight2left {
+    animation: furight2left .3s ease-out;
+    animation-fill-mode: both;
+  }
+}
+@keyframes down {
+  0% {
+    transform: translate3d(0, -100%, 0)
+  }
+  100% {
+    transform: translate3d(0, 0, 0)
+  }
+}
+@keyframes left2right {
+  0% {
+    transform: translate3d(100%, 0, 0)
+  }
+  100% {
+    transform: translate3d(0, 0, 0)
+  }
+}
+@keyframes right2left {
+  100% {
+    transform: translate3d(100%, 0, 0)
+  }
+}
+@keyframes right2out {
+  0% {
+    transform: translate3d(0, 0, 0)
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0)
+  }
+}
+@keyframes furight2left {
+  0% {
+    transform: translate3d(-100%, 0, 0)
+  }
+  100% {
+    transform: translate3d(0, 0, 0)
+  }
+}
+
+
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes slideOutDown {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes slideInDown {
+  from {
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes slideOutUp {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(0, -100%, 0);
+  }
+}
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+$aniTime: 0.3s;
+.animated {
+  animation-duration: $aniTime;
+  animation-fill-mode: both;
+}
+.fadeOut {
+  animation-name: fadeOut;
+}
+.fadeIn {
+  animation-name: fadeIn;
+}
+.zoomIn {
+  animation-name: zoomIn;
+}
+
+.chooseAni-enter-active {
+  transition: all $aniTime;
+  .slideInUp {
+    animation-name: slideInUp;
+    animation-fill-mode: both;
+  }
+  .slideInDown {
+    animation-name: slideInDown;
+    animation-fill-mode: both;
+  }
+  .choose-pop-bg {
+    animation: fadeIn $aniTime;
+    animation-fill-mode: both;
+  }
+}
+.chooseAni-leave-active {
+  transition: all $aniTime;
+  .slideInUp {
+    animation-name: slideOutDown;
+    animation-fill-mode: both;
+  }
+  .slideInDown {
+    animation-name: slideOutUp;
+    animation-fill-mode: both;
+  }
+  .choose-pop-bg {
+    animation: fadeOut $aniTime;
+    animation-fill-mode: both;
+  }
+}
+.goUpAni {
+  animation-duration: $aniTime;
+  animation-fill-mode: both;
+  &.slideInUp {
+    animation-name: slideInUp2;
+    animation-fill-mode: both;
+  }
+}
+.goDownAni {
+  animation-duration: $aniTime;
+  animation-fill-mode: both;
+  &.slideOutDown {
+    animation-name: slideOutDown2;
+    animation-fill-mode: both;
+  }
+}
+@keyframes slideInUp2 {
+  from {
+    transform: translate3d(0, 150%, 0);
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes slideOutDown2 {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(0, 150%, 0);
+  }
+}
+.for-ani-route{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  z-index: 200;
+}
+.routerContainer {
+  min-height: 100%;
+  background: #f8f8f8;
+}
+
+.flex {
+  display: flex;
+  &.flex-h { // 子元素水平排雷
+    flex-direction: row;
+  }
+  &.flex-h-c { // 子元素水平居中
+    justify-content: center;
+  }
+  &.flex-h-start { // 子元素靠前
+    justify-content: flex-start;
+  }
+  &.flex-h-end { // 子元素靠后
+    justify-content: flex-end;
+  }
+  &.flex-h-between { // 子元素两头靠边，中间等距
+    justify-content: space-between;
+  }
+  &.flex-h-around { // 子元素周围的距离都是相等的
+    justify-content: space-around;
+  }
+
+  &.flex-v { // 子元素垂直排列
+    flex-direction: column;
+  }
+  &.flex-v-c { // 子元素垂直居中
+    align-items: center;
+  }
+  &.flex-v-start {
+    align-items: flex-start;
+  }
+  &.flex-v-end {
+    align-items: flex-end;
+  }
+  &.flex-v-baseline {
+    align-items: baseline;
+  }
+  &.flex-v-stretch {
+    align-items: stretch;
+  }
+  &.flex-wrap {
+    flex-wrap: wrap;
+  }
+}
+.lineTwo{
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.mask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index:900;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.4);
+}
+
+.hideScroll{
+  height: 100%;
+  overflow: hidden;
+}
+
+//vue transition
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-to {
+  opacity: 1;
+}
+.fade-leave {
+  opacity: 1;
+}
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .3s;
+}
+
+//img 默认背景图
+//transition 从底部出现
+@keyframes layerDownFadeIn {
+  0%{
+    transform: translateY(100%);
+  }
+  100%{
+    transform: translateY(0);
+  }
+}
+@keyframes layerDownFadeOut {
+  0%{
+    transform: translateY(0);
+  }
+  100%{
+    transform: translateY(100%);
+  }
+}
+//transition 从右边出现
+@keyframes layerRightFadeIn {
+  0%{
+    transform: translateX(100%);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
+@keyframes layerRightFadeOut {
+  0%{
+    transform: translateX(0);
+  }
+  100%{
+    transform: translateX(100%);
+  }
+}
+//transition 从左边出现
+@keyframes layerLeftFadeIn {
+  0%{
+    transform: translateX(-100%);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
+@keyframes layerLeftFadeOut {
+  0%{
+    transform: translateX(0);
+  }
+  100%{
+    transform: translateX(-100%);
+  }
+}
+
+// 颜色定义规范
+$color-background : #fff;
+
+$color-background-d : rgba(0, 0, 0, 0.3);
+$color-highlight-background : #333;
+$color-dialog-background : #666;
+
+$color-text :#222222;
+
+//字体定义规范
+$font-size-small-s :10px;
+$font-size-small :12px;
+$font-size-medium :14px;
+$font-size-medium-x :16px;
+$font-size-large:18px;
+$font-size-large-x :22px;
+
+// font-family
+$font-family:'Helvetica';
+
