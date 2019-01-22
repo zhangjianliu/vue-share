@@ -12,5 +12,12 @@ const $i18n = new VueI18n({
     'ru': require('../assets/lang/ru')
   }
 });
-
 export default $i18n
+
+export function getLang() {
+  return "en";
+}
+
+export function getMessages(){
+  return messages.i18n;
+}
