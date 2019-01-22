@@ -180,35 +180,6 @@
   min-height: 100%;
   background: #f8f8f8; }
 
-.flex {
-  display: flex; }
-  .flex.flex-h {
-    flex-direction: row; }
-  .flex.flex-h-c {
-    justify-content: center; }
-  .flex.flex-h-start {
-    justify-content: flex-start; }
-  .flex.flex-h-end {
-    justify-content: flex-end; }
-  .flex.flex-h-between {
-    justify-content: space-between; }
-  .flex.flex-h-around {
-    justify-content: space-around; }
-  .flex.flex-v {
-    flex-direction: column; }
-  .flex.flex-v-c {
-    align-items: center; }
-  .flex.flex-v-start {
-    align-items: flex-start; }
-  .flex.flex-v-end {
-    align-items: flex-end; }
-  .flex.flex-v-baseline {
-    align-items: baseline; }
-  .flex.flex-v-stretch {
-    align-items: stretch; }
-  .flex.flex-wrap {
-    flex-wrap: wrap; }
-
 .lineTwo {
   overflow: hidden;
   text-overflow: ellipsis;

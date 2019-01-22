@@ -246,49 +246,6 @@ $aniTime: 0.3s;
   background: #f8f8f8;
 }
 
-.flex {
-  display: flex;
-  &.flex-h { // 子元素水平排雷
-    flex-direction: row;
-  }
-  &.flex-h-c { // 子元素水平居中
-    justify-content: center;
-  }
-  &.flex-h-start { // 子元素靠前
-    justify-content: flex-start;
-  }
-  &.flex-h-end { // 子元素靠后
-    justify-content: flex-end;
-  }
-  &.flex-h-between { // 子元素两头靠边，中间等距
-    justify-content: space-between;
-  }
-  &.flex-h-around { // 子元素周围的距离都是相等的
-    justify-content: space-around;
-  }
-
-  &.flex-v { // 子元素垂直排列
-    flex-direction: column;
-  }
-  &.flex-v-c { // 子元素垂直居中
-    align-items: center;
-  }
-  &.flex-v-start {
-    align-items: flex-start;
-  }
-  &.flex-v-end {
-    align-items: flex-end;
-  }
-  &.flex-v-baseline {
-    align-items: baseline;
-  }
-  &.flex-v-stretch {
-    align-items: stretch;
-  }
-  &.flex-wrap {
-    flex-wrap: wrap;
-  }
-}
 .lineTwo{
   overflow : hidden;
   text-overflow: ellipsis;
