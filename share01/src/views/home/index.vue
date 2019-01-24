@@ -1,6 +1,6 @@
 <template>
   <div class="home-page">
-    <Welcome></Welcome>
+    <Welcome v-bind="post"></Welcome>
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -12,6 +12,10 @@
     },
     data () {
       return {
+        post: {
+          id: 1,
+          title: 'My Journey with Vue'
+        }
       }
     },
     created () {

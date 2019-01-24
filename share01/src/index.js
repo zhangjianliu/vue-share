@@ -19,13 +19,13 @@ import * as filters from './filter';
 import i18n from "./i18n"
 
 //注册过滤器
+
 Object.keys(filters).forEach(k => Vue.filter(k, filters[k]));
 
 // 注意如果不配置会报module找不到的错误
 import "./assets/css/reset.css";
 
 __webpack_public_path__ = window.__staticUrl; //动态配置路径
-
 
 
 // 图片懒加载 应用

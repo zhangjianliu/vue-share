@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue 入门</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>输入的密码是: {{ message }}</p>
+    <span>请输六位数密码 : </span>
+    <label for="password">
+        <input v-model="password" type="password" maxlength="6" id="password" name="password" />
+    </label>
+
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            password: '930913'
+        }
+    })
+</script>
+</body>
+</html>

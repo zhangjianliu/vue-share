@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue 数据监听</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
+</head>
+<style>
+
+</style>
+<body>
+<div id="app">
+    <ul>
+        <li>
+            <p><span>初始a的值=</span><span>1</span></p>
+            <p><span>改变后a的值=</span><span>{{a}}</span></p>
+        </li>
+        <li>
+            <p> <span>初始值g的值=</span><span>5</span></p>
+            <p><span>改变后g的值=</span><span>{{b}}</span></p>
+        </li>
+        <li>
+            <p> <span>初始c[0].message的值=</span><span>Foo</span></p>
+            <p><span>改变后c[0].message的值=</span><span>{{c[0].message}}</span></p>
+        </li>
+        <li>
+            <p> <span>初始c[1].message的值=</span><span>Bar</span></p>
+            <p><span>改变后c[1].message的值=</span><span>{{c[1].message}}</span></p>
+        </li>
+    </ul>
+
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        // watch 基本用法与注意事项
+        data: {
+            a: 1,
+            b: {
+                f: {
+                    g: 5
+                }
+            },
+            c: [
+                { message: 'Foo' },
+                { message: 'Bar' }
+            ],
+        },
+        mounted: function(){
+            this.a = 2;
+            this.b.f.g = 10;
+            //this.$set(this.c, 0, { message: 'AAA' });  // $set 赋值 可以监听到数组的变化
+            this.c[0] = { message: 'AAA' };  // 直接赋值 兼听不到数组的变化
+        },
+        watch: {
+            // 最简单最直接的监听方式，能监听简单的数据变化，这种方法默认就是执行 handler: function(){}
+            // 注意：这种方式监听不到对象的变化
+            a: function(val, oldVal){
+                console.log('a 变化之后的数据=',val);  // => 变化之后的数据
+                console.log("a 变化之前的数据=",oldVal); // => 变化之前的数据
+            },
+            // 深度监听，这里要注意一下，这样的方式打印出来两个值都是变化之后的值
+            // deep 的值默认为false，如果不写或者deep: false 都不能监听到对象值的变化
+            b: {
+                handler: function (val, oldVal) {
+                    console.log("b 对象变化之后的数据=",val);  // => 变化之后的数据
+                    console.log("b 对象变化之后的数据=",oldVal);  // => 变化之后的数据
+                },
+                deep: true,
+            },
+            // 如果要精准监听的对象值的变化，可以用这种方法
+            'b.f.g': function (val, oldVal) {
+                console.log("b 对象下的f 属性的g属性变化之后的数据=",val);  // => 变化之后的数据
+                console.log("b 对象下的f 属性的g属性变化之前的数据=",oldVal);  // => 变化之前的数据
+            },
+            // 监听数组
+            // 由于 JavaScript 的限制，Vue 不能检测 this.items[0] = { message: 'AAA' }; 这种方式赋值的变化
+            // 所以你要用 $set、或者数组变异的方法赋值
+            c: function(val, oldVal){
+                console.log('c 数组变化之后的数据=',val);  // => 变化之后的数据
+                console.log('c 数组变化之后的数据=',oldVal);  // => 变化之后的数据
+            }
+        }
+    })
+</script>
+</html>

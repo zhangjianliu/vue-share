@@ -1,7 +1,5 @@
 #vue 基本知识分享
 
-#ept h5 (部分)项目
-
 ##目录结构
 - 页面：src/views
 - 组件：src/components
@@ -59,7 +57,7 @@
 
 ###vue 方法命名
 
-####vue 方法放置顺序
+####vue 方法建议放置顺序
 - components
 
 - props

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue 事件处理、绑定属性</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
+</head>
+<style>
+    .red{
+        color: red;
+        margin-top: 20px;
+    }
+    .classA{
+        font-size: 20px;
+        margin-top: 20px;
+    }
+    .classB{
+        background: darkgrey;
+    }
+
+</style>
+<body>
+<div id="app">
+    <button v-on:click="handle">handle</button>
+    <button v-on="{ mousedown: doThis, mouseup: doThat }">鼠标事件</button>
+    <img v-bind:src="imageSrc" alt="" >
+
+    <div :class="{ red: isRed }">red: isRed</div>
+
+    <div :class="['classA', 'classB']">['classA', 'classB']</div>
+
+    <div :style="[styleObjectA, styleObjectB]">[styleObjectA, styleObjectB]</div>
+
+    <div v-bind="{ id: '商品id', 'name': '商品名字' }">hahaha</div>
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            name: 'vue 事件处理、绑定属性',
+            imageSrc:"https://avatar.csdn.net/2/9/2/3_osdfhv.jpg",
+            isRed:true,
+            styleObjectA:{
+                fontSize:20+"px",
+                color:"green"
+            },
+            styleObjectB:{
+                background:"yellow",
+                marginTop:20+"px"
+            },
+        },
+        methods: {
+            handle: function (event) {
+               // `this` 在方法里指向当前 Vue 实例
+                console.log('Hello ' + this.name + '!');
+               // `event` 是原生 DOM 事件
+              if (event) {
+                 console.log(event.target.tagName)
+               }
+            },
+            doThis(){
+                console.log("鼠标mousedown")
+            },
+            doThat(){
+                console.log("鼠标mouseup")
+            }
+        }
+    })
+</script>
+</html>

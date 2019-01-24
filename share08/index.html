@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue 组件</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
+</head>
+<style>
+
+</style>
+<body>
+<div id="app">
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+</div>
+</body>
+<script>
+    // 定义一个名为 button-counter 的新组件
+    Vue.component('button-counter', {
+        data: function () {
+            return {
+                count: 0
+            }
+        },
+        // data: {
+        //     count: 0
+        // },
+        template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+    });
+    var vm = new Vue({
+        el: '#app',
+        // watch 基本用法与注意事项
+        data: {
+        },
+        mounted: function(){
+        }
+    })
+</script>
+</html>

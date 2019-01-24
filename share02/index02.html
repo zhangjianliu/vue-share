@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue 入门</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p v-if="seen">现在你看到我了</p>
+    <p v-else >现在你看不到我了</p>
+    <div v-on:click="changeState()" style="background: darkgray;padding: 10px;width: 60px;">change</div>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            seen: true
+        },
+        methods:{
+            changeState(){
+                this.seen=!this.seen;
+            }
+        }
+    })
+</script>
+</body>
+</html>

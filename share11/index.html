@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue 路由</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    html{
+        width: 100%;
+        height: 100%;
+    }
+    body{
+        width: 100%;
+        height: 100%;
+    }
+     #app{
+         width: 100%;
+         height: 100%;
+     }
+    ul{
+        display: flex;
+        height: 40px;
+        line-height: 40px;
+        background: darkcyan;
+    }
+    li{
+        flex: 1;
+        text-align: center;
+        list-style: none;
+    }
+    a{
+        text-decoration: saddlebrown;
+    }
+    .a,.b,.c{
+        width: 100%;
+        height: 100%;
+        color: #ffffff;
+    }
+    .a{
+        background: darkmagenta;
+    }
+    .b{
+        background: darkblue;
+    }
+    .c{
+        background: darkseagreen;
+    }
+</style>
+<body>
+<div id="app">
+    <!-- 使用 router-link 组件来导航. -->
+    <!-- 通过传入 `to` 属性指定链接. -->
+    <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+    <ul>
+        <li>
+            <router-link to="/A">Go to A</router-link>
+        </li>
+        <li>
+            <router-link to="/B">Go to B</router-link>
+        </li>
+        <li>
+            <router-link to="/C">Go to C</router-link>
+        </li>
+    </ul>
+    <!-- 路由出口 -->
+    <!-- 路由匹配到的组件将渲染在这里 -->
+    <router-view>
+    </router-view>
+</div>
+</body>
+<script>
+
+    // 1. 定义 (路由) 组件。
+
+    // 可以从其他文件 import 进来
+    const A = { template: '<h3 class="a">hello，我是 A 页面</h3>' }
+    const B = { template: '<h3 class="b">hello，我是 B 页面</h3>' }
+    const C = { template: '<h3 class="c">hello，我是 C 页面</h3>' }
+
+    // 2. 定义路由
+    // 每个路由应该映射一个组件。 其中"component" 可以是
+    // 通过 Vue.extend() 创建的组件构造器，
+    // 或者，只是一个组件配置对象。
+    // 我们晚点再讨论嵌套路由。
+    const routes = [
+        { path: '/A', component: A },
+        { path: '/B', component: B },
+        { path: '/C', component: C }
+    ];
+
+    // 3. 创建 router 实例，然后传 `routes` 配置
+    // 你还可以传别的配置参数, 不过先这么简单着吧。
+    const router = new VueRouter({
+        mode: 'history',
+        routes // (缩写) 相当于 routes: routes
+    });
+
+    // 4. 创建和挂载根实例。
+    // 记得要通过 router 配置参数注入路由，
+    // 从而让整个应用都有路由功能
+
+
+    // 现在，应用已经启动了！
+
+
+    // 我们可以看成 这个是父组件
+    var vm = new Vue({
+        router,
+        el: '#app',
+        // watch 基本用法与注意事项
+        data: {
+        },
+        mounted: function(){
+        }
+    })
+</script>
+</html>

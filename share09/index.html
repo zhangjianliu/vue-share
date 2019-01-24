@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue 组件间传值02</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
+</head>
+<style>
+
+</style>
+<body>
+<div id="app">
+    <my-component v-on:broadcast="getValue" my-title='组件传值' my-name="骆导"  my-age="26"></my-component>
+    <div style="font-size: 30px;text-align: center" >
+        {{name}}
+    </div>
+</div>
+</body>
+<script>
+    // 定义一个名为 my-component 的新组件
+    Vue.component('my-component', {
+        props: {
+            myTitle:String,
+            myName:{
+                type: String,
+                required: true
+            },
+            myAge:{
+                type:[Number,String],
+                default: 22
+            }
+        },
+        methods:{
+            broadcast(){
+                this.$emit('broadcast',"煜哥");
+            }
+        },
+        template: `<div>
+        <h3>title:<span>{{myTitle}}</span> name:<span>{{myName}}</span>age: <span>{{myAge}}</span></h3>
+        <h4 v-on:click="broadcast">子组件向父组件传值</h4>
+        <h4 v-on:click="$emit('broadcast','煜哥')">子组件向父组件传值</h4>
+    </div>`
+    });
+
+    //  Invalid prop: type check failed for prop "myTitle". Expected Number, got String.
+
+    // 我们可以看成 这个是父组件
+    var vm = new Vue({
+        el: '#app',
+        // watch 基本用法与注意事项
+        data: {
+            name:""
+        },
+        methods:{
+            // 父组件响应
+            getValue(value){
+               this.name=value;
+            }
+        },
+        mounted: function(){
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue 组件间传值01</title>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
+</head>
+<style>
+
+</style>
+<body>
+<div id="app">
+    <!-- 静态属性-->
+    <my-component my-title='hello world'></my-component>
+
+    <!--我传的是一个变量 -->
+    <my-component v-bind:my-title='variable'></my-component>
+
+    <!--v-bind 简写方式 -->
+    <my-component :my-title='variable01'></my-component>
+
+    <!--传入一个对象进去 -->
+    <my-component :my-title='variable02' v-bind='obj'></my-component>
+</div>
+</body>
+<script>
+    // 定义一个名为 button-counter 的新组件
+    Vue.component('my-component', {
+        props: ['myTitle',"id","title"],
+        template: '<h3>{{myTitle}}->id={{id}}->title={{title}}</h3>'
+    });
+
+    // 我们可以看成 这个是父组件
+    var vm = new Vue({
+        el: '#app',
+        // watch 基本用法与注意事项
+        data: {
+            variable:"hello,我传的是变量",
+            variable01:"v-bind:简写方式",
+            variable02:"我传的是一个对象",
+            obj: {
+                id: 1,
+                title: 'Hello World'
+            }
+        },
+        mounted: function(){
+        }
+    })
+</script>
+</html>
