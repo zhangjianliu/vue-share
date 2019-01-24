@@ -2,17 +2,33 @@
     <div class="welcome">
       <h3>hello，欢迎来到 Vue.js</h3>
       <img src="../../assets/images/Vue.png" alt="">
-      <div class="go">Lets’go</div>
+      <div @click="go" class="go">Lets’go</div>
     </div>
 </template>
 
 <script>
+  // store 应用
+  import { mapActions, mapMutations,mapGetters} from "vuex"
+
     export default {
        props: ["id","title"],
+       methods:{
+         ...mapMutations({
+           setTestData:"SET_TEST_DATA"
+         }),
+         go(){
+           this.setTestData("世界要改变啦");
+         }
+       },
        created(){
           console.log(this.id);
-         console.log(this.title);
-       }
+          console.log(this.title);
+       },
+      computed: {
+        ...mapGetters([
+          "testData"  // store 里面获取页面传的值
+        ])
+      }
     };
 </script>
 

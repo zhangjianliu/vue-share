@@ -32,7 +32,7 @@ const cssLoaders = function(options) {
       minimize: process.env.NODE_ENV === 'production',
       sourceMap: options.sourceMap
     }
-  }
+  };
   // generate loader string to be used with extract text plugin
   function generateLoaders(loader, loaderOptions) {
     var loaders = [cssLoader]
@@ -69,7 +69,7 @@ const cssLoaders = function(options) {
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus')
   }
-}
+};
 
 module.exports = {
   //基本目录，一个绝对路径
